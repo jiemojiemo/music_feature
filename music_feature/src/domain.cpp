@@ -228,6 +228,11 @@ int Domain::getEndPosition(){
 	return end_;
 }
 
+int Domain::getPcmVecSize()
+{
+	return this->pcmVec_.size();
+}
+
 
 /** 
 *	getTimeDomainWindow

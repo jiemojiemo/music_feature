@@ -78,15 +78,16 @@ class FileVector{
 		T operator[](int position) {return getValueAt(position);}; ///assigns the operator [] to function getValueAt
 		int size() { return dataVector_.size(); }; ///returns the size of the dataVector
 		void setFileName(std::string fileName) {fileName_ = fileName;}; ///public access to private member... not needed
-
-	private:
+		std::string getFileName() { return fileName_; }
+	protected:
 		std::string fileName_; ///stores the string name of the file to be copied to vector format
 		std::vector<T> dataVector_; ///the vector to hold the file contents
 		ConfigFile settingsFile_; ///the configFile object for getting file header size
-
+		virtual void readDataFromFile();
 		T getValueAt(int position) { return dataVector_[position]; }; ///returns the value of the vector at a position
 		bool fileExists(); ///returns true or false to the existance of the private member file
 };
+
 
 //public
 /** 
@@ -124,20 +125,21 @@ template <class T>
 void FileVector<T>::setup(){
 	
 	if(fileExists()){
-		std::ifstream fin(fileName_.c_str());
-		std::string headerValue;	
+		readDataFromFile();
+		//std::ifstream fin(fileName_.c_str());
+		//std::string headerValue;	
 
-		int headerSize = settingsFile_.read<int>("PCM_HEADER_LINES", 5);
-		for(int i = 0; i < headerSize; ++i){
-			std::getline(fin, headerValue);
-		}
+		//int headerSize = settingsFile_.read<int>("PCM_HEADER_LINES", 5);
+		//for(int i = 0; i < headerSize; ++i){
+		//	std::getline(fin, headerValue);
+		//}
 
-		T fileValue;
-		while(fin >> fileValue){
-			dataVector_.push_back(fileValue);
-		}
+		//T fileValue;
+		//while(fin >> fileValue){
+		//	dataVector_.push_back(fileValue);
+		//}
 	
-		fin.close();
+		//fin.close();
 	}
 	else
 	{
@@ -162,6 +164,17 @@ void FileVector<T>::setup(){
 *	@todo Actually use this above
 **/
 
+template<class T>
+inline void FileVector<T>::readDataFromFile()
+{
+	std::ifstream fin(fileName_.c_str());
+	T fileValue;
+	while(fin >> fileValue){
+		dataVector_.push_back(fileValue);
+	}
+	fin.close();
+}
+
 //return true if a file exists given a name
 template <class T>
 bool FileVector<T>::fileExists(){
@@ -180,3 +193,5 @@ bool FileVector<T>::fileExists(){
 
 
 #endif
+
+

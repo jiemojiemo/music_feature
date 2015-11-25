@@ -74,6 +74,7 @@
 using namespace std;
 
 class FeatureExtract{
+	friend class Segmenter;
     public:
 	//constructor
         FeatureExtract(string fileName = "null.txt", int windowSize = 1024); ///constructor - inits private members

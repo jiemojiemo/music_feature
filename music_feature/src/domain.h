@@ -70,12 +70,14 @@
 #include <string>
 
 #include "fileVector.h"
+#include "wavFileVector.h"
 #include "configFile.h"
 
 using std::vector;
 using std::string;
 
 class Domain{
+	friend class FeatureExtract;
     public:
 	//constructor
 	Domain(string fileName = "null.txt", int windowSize = 1024); ///Constructor - inits private members
@@ -90,6 +92,7 @@ class Domain{
 	void setEndPosition(int end); ///Accessor to set private member end_
 	int getStartPosition(); ///Accessor to recover private member begin_
 	int getEndPosition(); ///Accessor to recover private member end_
+	int getPcmVecSize();
 
 	/* functions to get different domains */
 	vector<int> getTimeDomainWindow(int startingAt); ///returns the time domain values from a position		
@@ -103,7 +106,7 @@ class Domain{
 	int windowSize_; ///the size of each window over which to calculate domain values
 	string fileName_; /// the filename of the pcm file on which to operate
 
-	FileVector<int> pcmVec_; ///The fileVector of values from the pcm file
+	WavFileVector<int> pcmVec_; ///The fileVector of values from the pcm file
 	ConfigFile settingsFile_; ///The configFile for the settings file
 
 	vector<double> calcFrequencyDomainWindow(vector<int> pcmWindow); ///Calculates the freq domain over a pcm window

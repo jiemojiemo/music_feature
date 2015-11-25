@@ -77,6 +77,7 @@
 using namespace std;
 
 class Segmenter{
+	
 	public:
 
 		//constructor

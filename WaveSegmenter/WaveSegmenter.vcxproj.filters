@@ -15,51 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="WaveSegmenterMain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\configFile.cpp">
+    <ClCompile Include="..\libutil\WaveReader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\domain.cpp">
+    <ClCompile Include="..\libutil\WaveSegmenter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\feature.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\featureExtract.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\segmenter.cpp">
+    <ClCompile Include="..\include\util\WaveFileSegmenter.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\configFile.h">
+    <ClInclude Include="..\include\util\WaveSegmenter.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\domain.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\feature.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\featureExtract.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fileVector.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\segmenter.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\wavFileVector.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\common.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\scopeguard.h">
+    <ClInclude Include="..\include\util\WaveFileSegmenter.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

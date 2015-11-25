@@ -105,10 +105,19 @@ Segmenter::Segmenter(string strPCMFileName){
 **/
 void Segmenter::setup(){
 	settingsFile_.setFileName("settings.txt");
-	readCheckPCMHeader();
+	//readCheckPCMHeader();
 	fexExtractor_.setFileName(strPCMFileName_);
 	fexExtractor_.setWindowSize(settingsFile_.read<int>("WINDOW_SIZE", 1024));
 	fexExtractor_.setup();
+
+	//ignore readCheckPCMHeader(), we set fixed values
+	//set fixed values, we can use this program without PCMHeader
+	//need modify FileVector::setup, because no header need to read
+	intNumSamples_ = fexExtractor_.domain_.getPcmVecSize();
+	intBitsPerChannel_ = 16;
+	intChannels_ = 1;
+	intSampleRate_ = 44100;
+	blnNormalized_ = true;
 }
 
 /** 
